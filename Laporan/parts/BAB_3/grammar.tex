@@ -1,4 +1,15 @@
 \section{Gramatika}
-Grammar suatu bahasa dapat dilihat sebagai suatu aturan yang menentukan apakah suatu kumpulan kata dapat diterima sebagai kalimat oleh bahasa tersebut. Sebuah bahasa L dapat dijelaskan sebagai se dari \emph{string}, dimana \emph{string} dibentuk dari bagian terkecil yang disebut dengan \emph{symbol}.
+Grammar suatu bahasa dapat dilihat sebagai suatu aturan yang menentukan apakah suatu kumpulan kata dapat diterima sebagai kalimat oleh bahasa tersebut. Sebuah bahasa L dapat dijelaskan sebagai satu kumpulan \emph{string}, dimana \emph{string} dibentuk dari bagian terkecil yang disebut dengan \emph{symbol}. Kelompok tertentu v dari \emph{symbol} biasa dikenal sebagai alfabet atau perbendaharaan kata. Sebuah kalimat yang dapat dikenali dibentuk dengan berdasarkan aturan-aturan tata bahasa yang biasa disebut \emph{grammar}.
 
-Sebuah \emph{grammar} G dinyatakan dalam persamaan 
+Sebuah \emph{grammar} G dapat dibentuk dari empat buah \emph{tuple} yaitu: simbol non-terminal, simbol terminal, simbol awalan dan aturan penulisan atau \emph{rule} sehingga dapat ditulisakan sebagai G=(vn, vt, s, p). Sebagai contoh dapat kita lihat pada \emph{grammar} G sederhana berikut:
+\begin{figure}[grammar_1]
+	\centerin
+	\label{fig:grammar1}
+\end{figure}
+semua kalimat tersebut apabila dicari pembentukannya melalui \emph{grammar} G dapat dikatakan benar, akan tetapi harus diingat bahwa kalimat dengan \emph{grammar} yang benar hanya berarti benar secara struktural bukan berarti selalu benar dalam makna. Seperti kalimat ketiga yang hanya benar apabila berada dalam konteks `'orang memakai alat`' misalnya pesawat terbang. Sedangkan kalimat keempat malah sama sekali tidak mungkin dapat dimengerti maknanya, selain hanya akan menimbulkan tanda tanya bagi yang membaca. Dari \emph{grammar} kita dapat mempelajari bahasa dari segi struktur dan bukan dari segi makna bahasa itu sediri.
+
+\citet{bar_feigenbaum} membagi \emph{grammar} ke dalam empat kelompok berdasarkan bentuk penulisan aturan produksi yaitu:
+\begin{enumerate}
+	\item \emph{Recursive enumerable grammar}\\
+	Tipe ini biasa disebut tipe 0 merupakan tipe yang tidak membatasi jumlah simbol terminal dan non terminal 
+\end{enumerate}

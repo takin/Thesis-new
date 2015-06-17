@@ -1,0 +1,33 @@
+\section{Pengolahan Bahasa Alami}
+Pemrosesan bahasa alami atau \emph{Natural Language Processing (NLP)} merupakan salah satu bidang yang tidak dapat dipisahkan dari sebuah sistem \emph{question answering}. Kata kunci pencarian dalam sistem \emph{question answering} umumnya berupa bahasa alami sesuai dengan bahasa yang dipahami oleh pengguna, untuk itu pengolahan bahasa alami bertindak sebagai pemroses awal yang akan mengubah kalimat tanya yang diajukan oleh pengguna menjadi pohon urai \emph{(parse tree)} sehingga dapat diphamai oleh komputer.
+
+Tujuan dari pengolahan bahasa alami adalah untuk membuat model komputasi dari bahasa, sehingga memungkinkan manusia berinteraksi dengan komputer dengan menggunakan bahasa alami.
+
+\citet*{kao_potet} menjelaskan bahwa pengolahan bahasa alami (NLP) adalah usaha untuk mendapatkan representasi makna dari \emph{free text}.
+
+Pengolahan bahasa alami memiliki beberapa tingkat pengolahan yaitu:
+\begin{enumerate}
+	\item Fonetik dan fonologi \\
+		Tingkat ini berhubungan dengan suara yang menghasilkan kata yang dapat dikenali. Bidang ini penting untuk sebuah sistem yang berfokus pada sistem pengenalan suara \emph{(speech recognation).}
+	\item Morfologi \\
+		Pengetahuan tentang kata dan bentuknya dimafaatkan untuk membedakan satu kata dengan lainnya. Pada tingkat ini juga dapat dipisahkan antara kata dan elemen lain seperti tanda baca.
+	\item Sintaksis \\
+		Pemahaman tentang urutan kata dalam pembentukan kalimat dan hubungan antar kata tersebut dalam proses perubahan bentuk dari kalimat menjadi bentuk yang sistematis. Meliputi proses pengaturan tata letak suatu kata dalam kalimat akan membentuk kalimat yang dapat dikenali. Selain itu pula dikenali bagian-bagian kalimat dalam suatu kalimat yang lebih besar. Sebagai contoh kalimat S dibentuk dari noun phrase (NP) dan verb phrase (VP)\\
+		S -> NP,VP\\
+		dan berikutnya:\\
+		NP -> DET,N\\
+		VP -> V,NP\\
+		NP -> N
+	\item Semantik\\
+		Pemetaan bentuk sturktur sintaksis dengan memanfaatkan tiap kata ke dalam bentuk yang lebih mendasar dan tidak tergantung struktur kalimat. Semantik mempelajari arti suatu kata dan bagaimana dari arti kata - arti kita tersebut membentuk suatu arti dari kalimat yang utuh. Dalam tingkatan ini belum tercakup konteks dari kalimat tersebut.
+	\item Pragmatik\\
+		Penegtahuan pada tingkatan ini berkaitan dengan masing-masing konteks yang berbeda tergantung pada situasi dan tujuan pembuatan sistem.
+	\item Discourse knowledge
+		Tingkatan ini melakukan pengenalan apakah suatu kalimat yang sudah dibaca dan dikenali sebelumnya akan mempengaruhi arti dari kalimat selanjutnya. Informasi ini penting diketahui untuk melakukan pengolahan arti terhadap kata ganti orang dan untuk mengartikan aspek sementara dari informasi.
+	\item World knowledge\\
+		Mencakup arti sebuah kata secara umum dan apakah ada arti secara khusus bagi suatu kata dalam suatu percakapan dengan konteks tertentu.
+\end{enumerate}
+
+Definisi ini tidaklah bersifat kaku, dan untuk setiap bentuk bahasa alami yang ada biasanya ada pendefinisian lagi yang lebih spesifik sesuai dengan katater bahasa tertentu. Pada beberapa masalah mungkin hanya mengambil beberapa dari pendekatan tersebut bahkan mungkin ada yang melakukan tembahan proses sesuai dengan karakter dari bahasa yang digunakan dan sistem yang dibentuk.
+
+Selain yang sudah disebutkan diatas, masih ada lagi satu masalah yang cukup menantang dalam bidang pengolahan bahasa alami yaitu masalah ambiguitas atau makna ganda dari satu buah kata atau kalimat. Dari satu masukan yang sama dapat dapat menjadi beberapa arti yang berbeda dan masing-masing dapat bernilai benar tergantung pada keperluan pemakai. Hal ini dapat terjadi pada hampir semua tingakatan pendekatan di atas.
