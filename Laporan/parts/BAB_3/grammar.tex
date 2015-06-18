@@ -3,13 +3,18 @@ Grammar suatu bahasa dapat dilihat sebagai suatu aturan yang menentukan apakah s
 
 Sebuah \emph{grammar} G dapat dibentuk dari empat buah \emph{tuple} yaitu: simbol non-terminal, simbol terminal, simbol awalan dan aturan penulisan atau \emph{rule} sehingga dapat ditulisakan sebagai G=(vn, vt, s, p). Sebagai contoh dapat kita lihat pada \emph{grammar} G sederhana berikut:
 \begin{figure}[grammar_1]
-	\centerin
-	\label{fig:grammar1}
+
 \end{figure}
 semua kalimat tersebut apabila dicari pembentukannya melalui \emph{grammar} G dapat dikatakan benar, akan tetapi harus diingat bahwa kalimat dengan \emph{grammar} yang benar hanya berarti benar secara struktural bukan berarti selalu benar dalam makna. Seperti kalimat ketiga yang hanya benar apabila berada dalam konteks `'orang memakai alat`' misalnya pesawat terbang. Sedangkan kalimat keempat malah sama sekali tidak mungkin dapat dimengerti maknanya, selain hanya akan menimbulkan tanda tanya bagi yang membaca. Dari \emph{grammar} kita dapat mempelajari bahasa dari segi struktur dan bukan dari segi makna bahasa itu sediri.
 
 \citet{bar_feigenbaum} membagi \emph{grammar} ke dalam empat kelompok berdasarkan bentuk penulisan aturan produksi yaitu:
 \begin{enumerate}
 	\item \emph{Recursive enumerable grammar}\\
-	Tipe ini biasa disebut tipe 0 merupakan tipe yang tidak membatasi jumlah simbol terminal dan non terminal 
+	\emph{Recursive enumerable grammar} atau tipe 0 merupakan tipe yang tidak membatasi jumlah simbol terminal dan non terminal untuk kedua sisi aturan produksinya. Kemampuan skepresi \emph{(expressive power)} dari \emph{grammar} tipe ini sama dengan mesin turing.
+	\item \emph{Contex-sensitive grammar}\\
+	\emph{Context-sensitve grammar} atau \emph{grammar} tipe 1 memiliki ketentuan dimana simbol sisi kanan lebih banyak atau sama dengan simbol sisi kiri. \emph{Grammar} ini mampu merepresentasikan bahasa seperti anbncn
+	\item \emph{Contex-free grammar}\\
+	Merupakan \emph{grammar} tipe 2 merupakan \emph{grammar} yang memiliki ciri yaitu sisi kiri hanya memiliki satu buah simbol non terminal. Tiap-tiap aturan produksi dapat membuat simbol non terminal dengan konteks yang bebas pada sisi sebelah kanan. \emph{Context-free grammar} populer digunakan untuk \emph{grammar} bahsa alami meskipun konstruksi beberapa bahasa alami tidak bersifat \emph{context-free}.
+	\item \emph{Regular grammar}\\
+	\emph{Regular grammar} atau tipe 3 adalah \emph{grammar} yang memiliki batasan yang paling ketat. Masing-masing aturan produksi memiliki sebuah simbol non terminal pada sisi kiri. Masing-masing aturan produksi memiliki sebuah simbol terminal yang secara opsional dapat diikuti oleh sebuah simbol non terminal pada sisi kanan. Contoh 
 \end{enumerate}
