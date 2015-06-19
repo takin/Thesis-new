@@ -1,2 +1,29 @@
-\section{Parsing}
-Parsing merupakan proses menganalisa sekumpulan kata berdasarkan grammar tertentu
+\section{\emph{Parsing}}
+Menurut \citet{bar_feigenbaum} melalui \citet{suryawan}, \emph{parsing} adalah proses delinierisasi input linguistik, yaitu menggunakan sintak dan sumber pengetahuan lain untuk menentukan fungsi dari kata-kata yang terdapat di dalam kalimat untuk membentuk suatu struktur data seperti \emph{derivation tree} yang dapat digunakan untuk memperoleh makna kalimat. \citep{russel_norvig} mendefinisikan \emph{parsing} sebagai proses pencarian \emph{parse tree} dari input string.
+
+Menurut \citet{gazdar_mellish}, parser adalah perangkat komputasi yang melakukan inferensi struktur dari kata-kata yang berupa string gramatikal. \citet{bar_feigenbaum} memandang parser sebagai \emph{recursive pattern matcher} yang melakukan pencarian untuk memetakan string kata-kata ke dalam himpunan pola sintaksis yang bermakna.
+
+Himpunan dari pola sintaksis yang digunakan oleh parser ditentukan oleh \emph{grammar} dari kalimat input. Secara teoritis, parser dapat memutuskan kalimat-kalimat yang termasuk dalam kalimat gramatikal dan dapat membangun struktur data yang merepresentasikan struktur sintaksis dari kalimat gramatikal yang ditemui dengan menggunakan \emph{grammar} yang kemprehensif \citep{bar_feigenbaum}.
+
+\citet{bar_feigenbaum} mengeukakan strategi dalam melakukan proses parsing yaitu:
+\begin{enumerate}
+	\item \emph{Backtracking} terhadap pemrosesan paralel\\
+	Ambiguitas dalam pemrosesan bahasa alami adalah salah satu masalah yang tidak dapat dihindari. Ketika menemukan ambiguitas, parser harus menentukan pilihan diantara beberapa alternatif yang tersedia. Semua alternatif dapat ditangani secara simultan dengan menggunakan pemrosesan paralel. Parser juga dapat memilih untuk menelusiri salah satu alternatif dengan menggunakan \emph{backtracking}, yaitu melakukan \emph{back up} pada titik pemilihan sebelumnya di dalam komputasi untuk mencoba lagi.
+
+	\citet{gazdar_mellish} menyatakan penggunaan metode pencarian \emph{breadth first search} (BFS) dan \emph{deep first search} (DFS) untuk mengatasi masalah ambiguitas dalam pemrosesan bahasa alami. Ketika menggunakan BFS, semua alternatif akan dicoba satu per satu sebelum menelusuri masing-masing alternatif secara lebih mendalam. Jika menggunakan DFS, maka salah satu alternatif akan ditelusuri sampai ditemukan hasil atau laternatif tersebut terbuktu tidak dapat memberikan solusi. \emph{Backtracking} dilakukan jika alternatif yang ditelusuri dengan menggunakan DFS terbukti tidak dapat memberikan solusi.
+
+	\item Perosesan dengan cara \emph{top-down} dan \emph{bottom-up}\\
+	Dalam proses penurunan sintaksis, parser dapat memulainya dari tujuan, yaitu himpunan struktur kalimat yang dapat diterima, atau memulai dari kata-kata yang menyusun kalimat.
+
+	Parser \emph{top-down} yang ketat memulai proses parsing dengan mencari struktur yang diinginkan yang berada pada level tertinggi (kalimat, klausa dan lain-lain). Parser akan terus mencari aturan \emph{grammar} untuk mendapatkan pengganti struktur yang sedang diperiksa hingga diperoleh struktur kalimat yang lengkap. Proses parsing berhasil jika kalimat yang diturunkan oleh parser sama dengan kalimat input.
+
+	Parser \emph{bottom-up} memulai proses parsing dengan mencari aturan di dalam \emph{grammar} yang dapat digunakan untuk mengkombinasikan kata-kata penyusun kalimat input menjadi struktur yang lebih besar (frasa atau kalusa). Parser akan terus berusaha mencari aturan \emph{grammar} yang dapat digunakan untuk mengkombinasikan struktur-struktur yang ditemukan hingga diperoleh kalimat yang legal menurut \emph{grammar}. Proses parsing berhasil jika kalimat yang legal menurut \emph{grammar} dapat ditemukan.
+
+	\item Pilihan untuk meng- \emph{expand} atau meng- \emph{combine}\\
+	Pendekatan bagaiman mengkombinasikan kata-kata (pada \emph{bottom-up parsing}) atau bagaiama mengembangkan struktur (pada \emph{top-down parsing}) dapat dilakukan secara satu arah, yaitu dari kiri ke kanan, atau dari kanan ke kiri. Pendekatan bagaiman mengkobinasikan kata-kata atau bagaimana mengmbangkan struktur juga dapat dilakukan dengan memulai pencarian pada sebarang posisi, kemudian memperhatikan potongan tetangganya secara sistematis (metode ini disebut \emph{island driving}).
+
+	\item \emph{Multiple knowledge source}\\
+	Perancangan parser perlu juga memperhatikan pengetahuan lain yang mendukung proses \emph{parsing} seperti fonemis, leksikal, sintaksis semantik dan lain sebagainya.
+\end{enumerate}
+
+Chomsky dan Postal dalam \citet{bar_feigenbaum} menyatakan bahwa secara umum bahasa alami tidak bersifat \emph{context-free}. Salah satu pendekatan yang digunakan untuk dapat mengakomodasi bahasa alami yang tidak bersifat \emph{context-free} adalah dengan menggunakan fitur di dalam \emph{grammar}. Di dalam \emph{modern feature-theoretic syntax}, kategori sintaksis seperti Verba digantikan dengan himpunan spesifikasi fitur. Masing-masing spesifikasi fitur memiliki fitur dan nilai untuk fitur tersebut \citep{gazdar_mellish}.
