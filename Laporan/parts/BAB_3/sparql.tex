@@ -1,0 +1,54 @@
+\section{SPARQL \emph{(Sparql Query Language)}}
+SPARQL (diucapkan: ``sparkl'') adalah bahasa \emph{query} RDF \emph{(Resource Description Framework)} dan protokol untuk semantik web \citep{liyang_yu}. Secara harfiah, sparql adalah bahasa query yang dapat kita gunakan untuk melakukan query terhadap data dalam bentuk RDF dan sparql juga menyediakan protokol yang perlu kita ikuti jika ingin melakukan \emph{query} terhadap \emph{remote} RDF \citep{liyang_yu}. Tim Berners-Lee melalui \citet{ducharme} mengungkapkan ``Mencoba menggunakan semantik web tanpa sparql sama seperti menggunakan basis data relasional tanpa SQL''.
+
+Rekoendasi W3C \emph{World Wide Web Consortium} mengenai sparql terdiri dari tiga bagian, yaitu:
+
+\begin{enumerate}
+	\item \emph{SPARQL query language specification} yang membahas mengani inti dari bahasa query sparql.
+	\item \emph{SPAQRL Query XML Result Format specification} yang membahas mengenai format standar dari kembalian hasil query.
+	\item \emph{SPAQRL Protocol for RDF spesification} yang membahas mengenai protokol standar untuk mengakses RDF di lokasi yang berbeda \emph{(remote)}.
+\end{enumerate}
+
+Sparql terdiri dari empat buah bentuk query, yaitu (1) SELECT, (2) ASK, (3) DESCRIBE dan (4) CONSTRUCT. Diantara keempat bentuk query tersebut yang paling banyak digunakan adalah SELECT.
+
+\subsection{\emph{SELECT Query}}
+SELECT merupakan bentuk query yang paling sering digunakan. Kebanyakan fiturnya juga digunakan pada bentuk query lainnya (ASK, DESCRIBE dan CONSTRUCT). SELECT memiliki beberapa bentuk, yaitu:
+
+\begin{lstlisting}[language=JAVA]
+ 	// base directive
+ 	BASE <URI>
+
+ 	// list of prefix 
+ 	PREFIX pref: <URI>
+ 	...
+ 	// result description
+ 	SELECT <variabel1> <variabel2>
+
+ 	// graph to search
+ 	FROM <endpoint>
+
+ 	// query pattern
+ 	WHERE {
+ 		...
+ 	}
+\end{lstlisting} 
+
+Query \emph{SELECT} diawali dengan mendefinisikan sebuah \emph{base} URI kemudian diikuti dengan \emph{PREFIX}. Jumlah \emph{PREFIX} tidak dibatasi sesuai dengan jumlah URI yang akan dilibatkan dalam melakukan \emph{query}.
+
+Setelah \emph{base} URI dan \emph{PREFIX} ditentukan, selanjutnya adalah klausa \emph{SELECT}. Klausa ini digunakan untuk melakukan \emph{binding} terhadap data untuk menentukan data apa saja yang akan dikembalikan sebagai hasil \emph{query}.
+
+Klausa \emph{FROM} diletakkan setelah klausa \emph{SELECT}. Klausa ini berfungsi untuk menentukan alamat \emph{endpoint} yang akan dikenakan query
+
+\subsection{\emph{Query} Terhadap Multi-Graph}
+Contoh \emph{query} yang telah kita lihat pada sub bab sebelumnya hanya melibatkan \emph{graph} tunggal saja, namun demikian SPARQL memungkinkan kita untuk melakukan \emph{query} terhadap banyak \emph{graph} sekaligus dengan menggunakan metode \emph{named graph}.
+
+Sebelum melakukan query terhadap multi \emph{graph}, hal yang perlu diperhatikan adalah menyiapkan daftar \emph{named graph} yang akan kita \emph{query}. Definisi \emph{named graph} dilakukan dengan cara sebagai berikut:
+
+\begin{lstlisting}[language=SQL]
+	select *
+	from named <uri>
+	from named <uri>
+	...
+\end{lstlisting}
+
+URI pada potongan kode di atas menunjukkan lokasi masing-masig \emph{graph}. Diantara \emph{query} itu sendiri, 

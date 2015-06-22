@@ -1,5 +1,8 @@
 \section{Arsitektur Sistem}
-Arsitektur sistem yang akan dibangun ditunjukkan pada gambar \ref{fig:arsitektur_sistem}. Komunikasi antara \textit{client} dengan server untuk proses pencarian data dilakukan secara asinkoron dengan menggunakan AJAX \textit{(Asynchronous Javascript and XML)}. Masing-masing ontologi yang akan dibangun diletakkan di lokasi yang terpisah yang nantinya dapat diakses melalui protokol http.
+Sistem yang akan dikembangkan mengguanakan arsitektur RESTful untuk berkomunikasi antara \emph{client} dengan server. RESTful dipilih dengan tujuan agar mudah untuk mengembangkan \emph{client} berbasis multi-platform. Server menerima \emph{request} pertanyaan dalam format text/plain ataupun text/json, kemudian respon diberikan dalam format ojek json atau xml.
+
+Masing-masing ontologi diletakkan di lokasi yang berbeda dan dapat diakses secara terpisah melalui protokol HTTP sehingga akan lebih mudah diakses baik oleh aplikasi yang dikembangkan ini sendiri, maupun aplikasi lain yang nantinya ingin memanfaatkan ontologi yang telah dibangun. Gambar 
+
 
 \begin{figure}[h]
     \centering
