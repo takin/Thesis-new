@@ -14,23 +14,23 @@ Bagian atas pada gambar \ref{fig:owl_2_structure} menunjukkan format sintak yang
 
 Masing-masing format sintak memiliki kelebihan dan kekurangan. Format RDF/XML memiliki dukungan yang paling baik, hanya saja kurang intuitif jika dibandingkan dengan Turtle, Functional maupun Manchester, sedangkan Turtle Functional dan Manchester tidak memiliki dukungan \emph{tool} yang baik.
 
-\begin{lstlisting}[language=XML, caption=contoh sintak RDF/XML]
+\begin{lstlisting}[language=XML, caption=contoh sintak RDF/XML, xleftmargin=0pt]
 	<SubClassOf>
 		<Class IRI="Woman"/>
 		<Class IRI="Person"/>
 	</SubClassOf>
 \end{lstlisting}
 
-\begin{lstlisting}[language=XML, caption=contoh sintak functional]
+\begin{lstlisting}[language=XML, caption=contoh sintak functional, xleftmargin=0pt]
 	SubClassOf( :Woman :Person )
 \end{lstlisting}
 	
-\begin{lstlisting}[language=XML, caption=contoh manchester syntax]
+\begin{lstlisting}[language=XML, caption=contoh manchester syntax, xleftmargin=0pt]
 	Class: Woman
 		SubClassOf: Person
 \end{lstlisting}
 
-\begin{lstlisting}[language=XML, caption=contoh sintak turtle]
+\begin{lstlisting}[language=XML, caption=contoh sintak turtle, xleftmargin=0pt]
 	:Woman rdfs:subClassOf :Person .
 \end{lstlisting}
 

@@ -3,6 +3,7 @@ Sistem yang dikembangakan menggunakan platform Java dengan metode pemrograman be
 
 \subsection{Diagram \emph{usecase}}
 Diagram \emph{usecase} digunakan untuk menunjukkan interaksi sistem dengan aktor atau pengguna, berapa jumlah aktor serta hak akses masing-masing aktor terhadap sistem. Gambar \ref{fig:usecase_diagram} menunjukkan hubungan antara aktor dengan sistem. Sistem \emph{question answering} yang akan dibangun hanya melibatkan satu aktor yaitu pengguna yang akan memasukkan pertanyaan.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{usecase_diagram}
@@ -20,6 +21,7 @@ Kelas Main terdiri dari dua buah method yaitu \emph{doGet()} dan \emph{processRe
 
 \subsubsection{Kelas Tokenizer}
 Tokenizer merupakan kelas yang berfungsi untuk melakukan proses tokenisasi terhadap kalimat tanya yang dikirimkan oleh user. Tokenizer akan menghasilkan data token berupa \emph{array list}
+
 \subsubsection{Kelas NGram}
 Kelas ini berfungsi untuk melakukan proses penggabungan kata per kata untuk kemudian di cek pada ontologi apakah kata yang terbentuk terdapat di dalam ontologi atau tidak. Kelas ini juga berfungsi untuk melakukan POS-Tangging terhadap token untuk menandakan tipe dari kata tersebut.
 
@@ -27,7 +29,6 @@ Kelas NGram memiliki tiga buah method yaitu konstruktor, \emph{processNgram()} d
 
 \subsubsection{Kelas Ontology}
 Kelas Ontology merupakan kelas yang berfungsi untuk melakukan inisiasi ontologi. Kelas ini juga berfungsi untuk melakukan proses \emph{merging} terhadap ketiga ontologi sumber yang sudah di load sebelumnya.
-
 
 \begin{figure}[ht]
     \centering
@@ -37,4 +38,12 @@ Kelas Ontology merupakan kelas yang berfungsi untuk melakukan inisiasi ontologi.
 \end{figure}
 
 \subsection{Diagram \emph{activity}}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1\textwidth]{activity_diagram}
+	\caption{\emph{activity diagram}}
+	\label{fig:activity_diagram}
+\end{figure}
+
 \subsection{Diagram \emph{sequence}}
