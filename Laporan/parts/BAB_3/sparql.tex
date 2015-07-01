@@ -35,9 +35,7 @@ SELECT merupakan bentuk query yang paling sering digunakan. Kebanyakan fiturnya 
 
 Query \emph{SELECT} diawali dengan mendefinisikan sebuah \emph{base} URI kemudian diikuti dengan \emph{PREFIX}. Jumlah \emph{PREFIX} tidak dibatasi sesuai dengan jumlah URI yang akan dilibatkan dalam melakukan \emph{query}.
 
-Setelah \emph{base} URI dan \emph{PREFIX} ditentukan, selanjutnya adalah klausa \emph{SELECT}. Klausa ini digunakan untuk melakukan \emph{binding} terhadap data untuk menentukan data apa saja yang akan dikembalikan sebagai hasil \emph{query}.
-
-Klausa \emph{FROM} diletakkan setelah klausa \emph{SELECT}. Klausa ini berfungsi untuk menentukan alamat \emph{endpoint} yang akan dikenakan query
+Setelah \emph{base} URI dan \emph{PREFIX} ditentukan, selanjutnya adalah klausa \emph{SELECT}. Klausa ini digunakan untuk melakukan \emph{binding} terhadap data untuk menentukan data apa saja yang akan dikembalikan sebagai hasil \emph{query}. Klausa \emph{FROM} diletakkan setelah klausa \emph{SELECT}. Klausa ini berfungsi untuk menentukan alamat \emph{endpoint} yang akan dikenakan query
 
 \subsection{\emph{Query} Terhadap Multi-Graph}
 Contoh \emph{query} yang telah kita lihat pada sub bab sebelumnya hanya melibatkan \emph{graph} tunggal saja, namun demikian SPARQL memungkinkan kita untuk melakukan \emph{query} terhadap banyak \emph{graph} sekaligus dengan menggunakan metode \emph{named graph}.
@@ -51,4 +49,4 @@ Sebelum melakukan query terhadap multi \emph{graph}, hal yang perlu diperhatikan
 	...
 \end{lstlisting}
 
-URI pada potongan kode di atas menunjukkan lokasi masing-masig \emph{graph}. Diantara \emph{query} itu sendiri, 
+Baris 2 dan 3 pada potongan query di atas merupakan alamat URI graph yang akan dikenakan query.

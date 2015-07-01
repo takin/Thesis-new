@@ -1760,7 +1760,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFOHz9YhS6vKyc="
 									},
-									"name": "controller",
+									"name": "endpoint",
 									"ownedElements": [
 										{
 											"_type": "UMLDependency",
@@ -5529,7 +5529,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFOHzlFgCvD2oY="
 					},
-					"name": "ControllerSubSystem",
+					"name": "Endpoint",
 					"visible": true,
 					"defaultDiagram": false,
 					"ownedViews": [
@@ -5769,7 +5769,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "javax.servlet.http",
+											"text": "jersey",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -5970,7 +5970,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from javax.servlet.http)",
+											"text": "(from jersey)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -9468,7 +9468,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "controller",
+											"text": "endpoint",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -10920,7 +10920,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from controller)",
+											"text": "(from endpoint)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -19998,7 +19998,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFOHzlFgCvD2oY="
 					},
-					"name": "NLPSubSystem",
+					"name": "NLP",
 					"visible": true,
 					"defaultDiagram": false,
 					"ownedViews": [
@@ -23585,7 +23585,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFOHzlFgCvD2oY="
 					},
-					"name": "OntologySubSystem",
+					"name": "Ontology",
 					"visible": true,
 					"defaultDiagram": false,
 					"ownedViews": [

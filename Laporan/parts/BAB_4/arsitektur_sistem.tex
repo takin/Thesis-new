@@ -1,7 +1,7 @@
 \section{Arsitektur Sistem}
-Sistem yang akan dikembangkan mengguanakan arsitektur RESTful untuk berkomunikasi antara \emph{client} dengan server. RESTful dipilih dengan tujuan agar mudah untuk mengembangkan \emph{client} berbasis multi-platform. Server menerima \emph{request} pertanyaan dalam format text/plain ataupun text/json, kemudian respon diberikan dalam format ojek json atau xml.
+Arsitektur sistem yang akan dikembangkan ditunjukkan dalam gambar \ref{fig:arsitektur_sistem} dimana antara \emph{client} dengan server merupakan dua bagian yang terpisah. Komunikasi antara \emph{client} dengan server dilakukan secara asinkron. 
 
-Masing-masing ontologi diletakkan di lokasi yang berbeda dan dapat diakses secara terpisah melalui protokol HTTP sehingga akan lebih mudah diakses baik oleh aplikasi yang dikembangkan ini sendiri, maupun aplikasi lain yang nantinya ingin memanfaatkan ontologi yang telah dibangun. Arsitektur sistem yang dikembangkan dalam penelitian ini ditunjukkan dalam gambar \ref{fig:arsitektur_sistem}
+Arsitektur RESTful dipilih dengan tujuan untuk penyederhanaan proses komunikasi antara \emph{client} dengan server serta untuk memudahkan pengembangan \emph{client} berbasis multi-platform. Server menerima \emph{request} pertanyaan dalam format \emph{plain text} atau objek JSON, kemudian respon diberikan dalam format ojek json.
 
 \begin{figure}[ht]
     \centering
@@ -9,3 +9,5 @@ Masing-masing ontologi diletakkan di lokasi yang berbeda dan dapat diakses secar
     \caption{Arsitektur sistem yang akan dikembangkan}
     \label{fig:arsitektur_sistem}
 \end{figure}
+
+Masing-masing ontologi diletakkan di lokasi yang berbeda dan dapat diakses secara terpisah melalui protokol HTTP.

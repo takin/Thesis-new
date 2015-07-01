@@ -12,12 +12,14 @@ Pengolahan bahasa alami memiliki beberapa tingkat pengolahan yaitu:
 	\item Morfologi \\
 		Pengetahuan tentang kata dan bentuknya dimafaatkan untuk membedakan satu kata dengan lainnya. Pada tingkat ini juga dapat dipisahkan antara kata dan elemen lain seperti tanda baca.
 	\item Sintaksis \\
-		Pemahaman tentang urutan kata dalam pembentukan kalimat dan hubungan antar kata tersebut dalam proses perubahan bentuk dari kalimat menjadi bentuk yang sistematis. Meliputi proses pengaturan tata letak suatu kata dalam kalimat akan membentuk kalimat yang dapat dikenali. Selain itu pula dikenali bagian-bagian kalimat dalam suatu kalimat yang lebih besar. Sebagai contoh kalimat S dibentuk dari noun phrase (NP) dan verb phrase (VP)\\
-		S -> NP,VP\\
-		dan berikutnya:\\
-		NP -> DET,N\\
-		VP -> V,NP\\
-		NP -> N
+		Pemahaman tentang urutan kata dalam pembentukan kalimat dan hubungan antar kata tersebut dalam proses perubahan bentuk dari kalimat menjadi bentuk yang sistematis. Meliputi proses pengaturan tata letak suatu kata dalam kalimat akan membentuk kalimat yang dapat dikenali. Selain itu pula dikenali bagian-bagian kalimat dalam suatu kalimat yang lebih besar. Sebagai contoh kalimat S dibentuk dari noun phrase (NP) dan verb phrase (VP)
+		\begin{lstlisting}[language=Python,xleftmargin=0pt]
+			S -> NP,VP
+			dan berikutnya:
+			NP -> DET,N
+			VP -> V,NP
+			NP -> N
+		\end{lstlisting}
 	\item Semantik\\
 		Pemetaan bentuk sturktur sintaksis dengan memanfaatkan tiap kata ke dalam bentuk yang lebih mendasar dan tidak tergantung struktur kalimat. Semantik mempelajari arti suatu kata dan bagaimana dari arti kata - arti kita tersebut membentuk suatu arti dari kalimat yang utuh. Dalam tingkatan ini belum tercakup konteks dari kalimat tersebut.
 	\item Pragmatik\\
