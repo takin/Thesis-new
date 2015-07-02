@@ -1,7 +1,7 @@
 \section{\emph{Resource Description Framework}}
 \emph{Resource Description Framewok (RDF)} merupakan dasar pembentuk basis pengetahuan dalam semantik web, diajukan oleh W3C sebagai standar pada tahun 1999. RDF terdiri dari subjek, predikat dan objek yang kemudian dikenal dengan naman \emph{statement}. Subjek dapat berupa URI (Uniform Resource Identifier) yang berfungsi sebagai penanda atau \emph{identifier}, tidak menuntup kemungkinan sebuah subjek juga dapat berupa URL \emph{(Uniform Resource Locator)} yang merupakan bentuk khusus dari URI.  Predikat berupa URI yang menjelaskan hubungan antara subjek dengan objeknya sedangkan objek dapat berupa URI ataupun \emph{literal}. Sebuah pernyataan dalam RDF disebut dengan istilah \emph{triple}. secara grafis, bentuk \emph{statement} RDF dapat dilihat pada gambar \ref{fig:rdf_statement}.
 
-\begin{figure}[!]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[trim = 29mm 141mm 40mm 0mm, clip, scale=0.6]{gambar}
 	\caption{Struktur \emph{statement} RDF}
@@ -12,7 +12,7 @@ Sebagai contoh misalnya pernyataan ``Syamsul hobi badminton'', ``Syamsul memilik
 
 Agar dapat di proses oleh komputer maka RDF triple harus dituliskan dalam bahasa atau sintak yang dapat dimengerti oleh komputer. Hingga saat ini bentuk penulisan RDF yang direkomendasikan oleh W3C adalah dalam bentuk XML dengan menggunakan namespace yang khusus RDF. Contoh statement di atas dapat kita serialisasi menjadi RDF sebagai berikut:
 \lstinputlisting[firstline=1, lastline=7]{./parts/codeblock.xml}
-\begin{figure}[!]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[trim = 0mm 0mm 0mm 93mm, clip, scale=0.55]{gambar}
 	\caption{RDF dengan multi-statement}

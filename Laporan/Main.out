@@ -28,16 +28,4 @@
 \BOOKMARK [2][-]{subsection.1.9.1}{SELECT Query}{section.1.9}% 28
 \BOOKMARK [2][-]{subsection.1.9.2}{Query Terhadap Multi-Graph}{section.1.9}% 29
 \BOOKMARK [1][-]{section.1.10}{Question Answering}{chapter.1}% 30
-\BOOKMARK [0][-]{chapter.2}{ANALISIS DAN RANCANGAN SISTEM}{}% 31
-\BOOKMARK [1][-]{section.2.1}{Deskripsi Sistem}{chapter.2}% 32
-\BOOKMARK [1][-]{section.2.2}{Arsitektur Sistem}{chapter.2}% 33
-\BOOKMARK [1][-]{section.2.3}{Perancangan Sistem}{chapter.2}% 34
-\BOOKMARK [2][-]{subsection.2.3.1}{Modul endpoint}{section.2.3}% 35
-\BOOKMARK [2][-]{subsection.2.3.2}{Modul pemrosesan bahasa alami}{section.2.3}% 36
-\BOOKMARK [2][-]{subsection.2.3.3}{Modul pemrosesan ontologi}{section.2.3}% 37
-\BOOKMARK [1][-]{section.2.4}{Perancangan Antar Muka Aplikasi}{chapter.2}% 38
-\BOOKMARK [1][-]{section.2.5}{Perancangan Ontologi}{chapter.2}% 39
-\BOOKMARK [2][-]{subsection.2.5.1}{Ontologi pariwisata}{section.2.5}% 40
-\BOOKMARK [2][-]{subsection.2.5.2}{Ontologi geografi}{section.2.5}% 41
-\BOOKMARK [2][-]{subsection.2.5.3}{Ontologi Pemerintahan}{section.2.5}% 42
-\BOOKMARK [0][-]{appendix.A}{}{}% 43
+\BOOKMARK [0][-]{appendix.A}{}{}% 31
