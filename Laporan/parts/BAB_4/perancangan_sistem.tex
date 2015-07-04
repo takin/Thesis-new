@@ -1,7 +1,7 @@
 \section{Perancangan Sistem}
 Sistem yang dikembangakan menggunakan platform Java dengan model pemrograman berorientasi objek, untuk itu pemodelan sistem menggunakan bahasa UML \emph{(Unified Modelling Language)}. Adapun diagram UML yang digunakan untuk merepresentasikan sistem adalah \emph{usecase diagram, activity diagram dan class diagram}.
 
-\begin{figure}[th]
+\begin{figure}[hb]
     \centering
     \includegraphics[width=1\textwidth]{overview_package}
     \caption{Paket sistem \emph{question answering}}
@@ -11,14 +11,14 @@ Sistem yang dikembangakan menggunakan platform Java dengan model pemrograman ber
 % \subsection{Diagram \emph{usecase}}
 Diagram \emph{usecase} digunakan untuk menunjukkan interaksi sistem dengan aktor atau pengguna, berapa jumlah aktor serta hak akses masing-masing aktor terhadap sistem. Interaksi pengguna dengan sistem ditunjukkan dalam gambar \ref{fig:usecase_diagram} dimana sistem \emph{question answering} yang akan dibangun hanya melibatkan satu aktor yaitu pengguna yang akan memasukkan pertanyaan.
 
-Komponen-komponen penyusun server terdiri dari tiga buah sub modul utama seperti yang ditunjukkan dalam gambar \ref{fig:overview_package}, yaitu \emph{endpoint}, nlp dan ontology. sub modul \emph{endpoint} bertindak sebagai \emph{entry point} dimana sub modul ini hanya terdiri dari satu buah kelas yaitu Main.java. Sub modul nlp berisi kelas Tokenizer, Parser dan MorphologicalAnalyzer sedangkan sub modul ontology terdiri dari dua buah kelas yaitu OntologyLoader dan OntologyQuery.
-
-\begin{figure}[ht]
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.8\textwidth]{usecase_diagram2}
     \caption{Diagram \emph{usecase} sistem \emph{question answering}}
     \label{fig:usecase_diagram}
 \end{figure}
+
+Komponen-komponen penyusun server terdiri dari tiga buah sub modul utama seperti yang ditunjukkan dalam gambar \ref{fig:overview_package}, yaitu \emph{endpoint}, nlp dan ontology. sub modul \emph{endpoint} bertindak sebagai \emph{entry point} dimana sub modul ini hanya terdiri dari satu buah kelas yaitu Main.java. Sub modul nlp berisi kelas Tokenizer, Parser dan MorphologicalAnalyzer sedangkan sub modul ontology terdiri dari dua buah kelas yaitu OntologyLoader dan OntologyQuery.
 
 Selain modul utama tersebut, sistem juga menggunakan \emph{library} pihak ketiga seperti terlihata dalam gambar \ref{fig:overview_package}. Adapun \emph{library} pihak ketiga yang dibutuhkan adalah \emph{java sql connector} berfungsi sebagai konektor dengan database lexicon, \emph{jersey} sebagai library untuk membentuk web service serta \emph{owl api} untuk penanganan ontologi.
 
@@ -37,9 +37,18 @@ Sistem \emph{question answering} melalui beberapa tahapan pemrosesan hingga meng
 \subsection{Modul \emph{endpoint}}
 Modul \emph{endpoint} hanya terdiri dari satu buah kelas yaitu Main.java. Kelas ini terdiri dari dua buah method yaitu \emph{search()} dan \emph{buildResponse()} seperti ditunjukkan dalam gambar \ref{fig:sub_sistem_endpoint}. Method \emph{search()} menerima masukan berupa string yang merupakan pertanyaan yang dikirimkan oleh \emph{client}, method ini memiliki akses kenampakan public.
 
-Method \emph{buildResponse()} berfungsi untuk membentuk objek JSON yang nantinya akan dikirimkan kepada \emph{client} sebagai respon. Adapun format objek JSON yang dihasilkan adalah sebagai berikut:
+\begin{figure}[hb]
+    \centering
+    \includegraphics[width=1\textwidth]{sub_sistem_endpoint}
+    \caption{Struktur dan inetraksi modul \emph{endpoint}} 
+    \label{fig:sub_sistem_endpoint}
+\end{figure}
 
-\begin{lstlisting}[language=XML,xleftmargin=0pt]
+Method \emph{buildResponse()} berfungsi untuk membentuk objek JSON yang nantinya akan dikirimkan kepada \emph{client} sebagai respon. Adapun format objek JSON yang dihasilkan diperlihatkan dalam gambar \ref{fig:json_response_object}.
+
+\begin{figure}[hb]
+    \centering
+    \begin{lstlisting}[language=XML,xleftmargin=0pt]
     {
         "code" : <code>,
         "status": <pesan_teks>,
@@ -47,15 +56,11 @@ Method \emph{buildResponse()} berfungsi untuk membentuk objek JSON yang nantinya
         "answer": <array_jawaban>
     }
 \end{lstlisting}
+    \caption{Rancangan respon ojek JSON}
+    \label{fig:json_response_object}
+\end{figure}
 
 Objek ``code'' berisi integer kode sesuai dengan kode status standar yang digunakan oleh protokol HTTP, sedangkan objek ``status'' berisi string pesan sebagai penjelasan dari objek kode. Objek ``question'' berisi kalimat pertanyaan yang dikirimakan oleh \emph{client} sedangkan ``answer'' berisi array jawaban hasil pemrosesan sistem. Array ini dapat berupa array kosong jika sistem tidak berhasil menemukan jawaban.
-
-\begin{figure}[hb]
-    \centering
-    \includegraphics[width=1\textwidth]{sub_sistem_endpoint}
-    \caption{Struktur dan inetraksi modul \emph{endpoint}} 
-    \label{fig:sub_sistem_endpoint}
-\end{figure}
 
 Pertanyaan dikirimkan oleh \emph{client} dalam bentuk query parameter \emph{q}. Query parameter ini kemudian akan ditangkap dan diperiksa oleh method \emph{search()}. Jika query string berupa string kosong maka method \emph{search()} akan langsung memanggil method \emph{buildResponse()} dengan mengirimkan kode 204 yang mengindikasikan \emph{no content}. Jika query string dianggap valid maka method \emph{search()} akan memulai proses pencarian dengan melakukan proses tokenisasi dengan melakukan proses instansiasi kelas Tokenizer dan memanggil method \emph{tokenize()} dengan query parameter yang diterima sebelumnya sebagai parameter masukan. 
 
@@ -88,9 +93,11 @@ Struktur modul pemrosesan ontologi ditunjukan dalam gambar \ref{fig:sub_sistem_o
     \label{fig:sub_sistem_ontologi}
 \end{figure}
 
-Sebelum melakukan proses query, pertama-tama sistem akan melakukan proses pemeriksaan terhadap kelas ontologi berdasarkan \emph{parse tree} yang telah dibentuk. Pemeriksaan ini bertujuan untuk mengetahui apakah kelas yang akan dikenakan query memiliki aturan restriksi atau tidak. Jika kelas memiliki aturan restriksi, maka sistem akan memberikan tanda \emph{(flag) advanceSearch}. \emph{Flag} ini berfungsi untuk mengindikasikan bahwa selain query SPARQL nantinya juga akan dilakukan proses inferensi untuk mencari \emph{fact} yang mungkin secara implisit terdapat dalam ontologi tersebut. Hal ini dilakukan karena query SPARQL tidak dapat mencari fakta-fakta implisit yang terdapat dalam ontologi. Sebagi contoh, misalnya dalam kelas ``Bupati'', kelas ini memiliki definisi sebagai berikut:
+Sebelum melakukan proses query, pertama-tama sistem akan melakukan proses pemeriksaan terhadap kelas ontologi berdasarkan \emph{parse tree} yang telah dibentuk. Pemeriksaan ini bertujuan untuk mengetahui apakah kelas yang akan dikenakan query memiliki aturan restriksi atau tidak. Jika kelas memiliki aturan restriksi, maka sistem akan memberikan tanda \emph{(flag) advanceSearch}. \emph{Flag} ini berfungsi untuk mengindikasikan bahwa selain query SPARQL nantinya juga akan dilakukan proses inferensi untuk mencari \emph{fact} yang mungkin secara implisit terdapat dalam ontologi tersebut. Hal ini dilakukan karena query SPARQL tidak dapat mencari fakta-fakta implisit yang terdapat dalam ontologi. Sebagi contoh, misalnya dalam kelas ``Bupati'', kelas ini memiliki definisi seperti yang terlihat dalam gambar \ref{fig:definisi_kelas_bupati}.
 
-\begin{lstlisting}[language=XML,xleftmargin=0pt]
+\begin{figure}[t]
+    \centering
+    \begin{lstlisting}[language=XML,xleftmargin=0pt]
     <EquivalentClasses>
         <Class abbreviatedIRI="dbid:Bupati"/>
         <ObjectIntersectionOf>
@@ -100,10 +107,12 @@ Sebelum melakukan proses query, pertama-tama sistem akan melakukan proses pemeri
                 <Class abbreviatedIRI="dbid:Kabupaten"/>
             </ObjectSomeValuesFrom>
         </ObjectIntersectionOf>
-    </EquivalentClasses>
-\end{lstlisting}
+    </EquivalentClasses>\end{lstlisting}
+    \caption{Contoh definisi kelas \emph{anonymous} dengan restriksi}
+    \label{fig:definisi_kelas_bupati}
+\end{figure}
 
-Kelas ini mungkin tidak memiliki \emph{direct instance} namun jika sebuah \emph{instance} kelas \emph{Person} memenuhi kriteria restriksi di atas maka query harus dapat menemukan \emph{instance} tersebut. Untuk itu, proses inferensi perlu dilakukan selain proses query SPARQL.
+\emph{Instance} Kelas ``Bupati'' dapat berupa \emph{indirect instance}, yaitu \emph{instance} dari kelas ``Person'' yang memenuhi kriteria restriksi seperti yang telah di definisikan dalam gambar \ref{fig:definisi_kelas_bupati}, maka query harus dapat menemukan \emph{instance} tersebut. Untuk itu, proses inferensi perlu dilakukan selain proses query SPARQL.
 
 
 
