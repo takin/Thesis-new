@@ -56,7 +56,7 @@ Method \emph{buildResponse()} berfungsi untuk membentuk objek JSON yang nantinya
         "answer": <array_jawaban>
     }
 \end{lstlisting}
-    \caption{Rancangan respon ojek JSON}
+    \caption{Rancangan respon objek JSON}
     \label{fig:json_response_object}
 \end{figure}
 
@@ -84,7 +84,7 @@ Proses pengenalan kelas kata dilakukan dengan cara memeriksa kata yang bersangku
 Method \emph{parse} dalam kelas Parser berfungsi untuk membentuk \emph{parse tree}. Method ini menerima masukan berupa array list kata yang telah diberi kelas kata pada proses tokenisasi sebelumnya. Pembentukan \emph{parse tree} dilakukan dengan menggunakan metode \emph{bottom-up} dimana proses pemeriksaan aturan-aturan bahasa dimulai dari konstituen kalimat yang kemudian dilanjutkan dengan frasa hingga membentuk kalimat utuh. Apabila selama proses terdapat aturan yang tidak terpenuhi, maka proses pembentukan \emph{parse tree} akan dihentikan dan pembentukan \emph{parse tree} dianggap gagal.
 
 \subsection{Modul pemrosesan ontologi}
-Struktur modul pemrosesan ontologi ditunjukan dalam gambar \ref{fig:sub_sistem_ontologi}. Modul ini merupakan modul utama yang terdri dari dua buah kelas masing-masing OntologyLoader yang berfungsi untuk memanggil ontologi dan membentuk objek java yang siap untuk di query. Pada kelas OntologyLoader juga dilakukan instansiasi objek \emph{reasoner}. Kelas OntologyQuery befungsi untuk melakukan operasi query terhadap objek ontologi yang telah dibuat dalam kelas OntologyLoader.
+Struktur modul pemrosesan ontologi ditunjukan dalam gambar \ref{fig:sub_sistem_ontologi}. Modul ini merupakan modul utama yang terdri dari dua buah kelas masing-masing OntologyLoader yang berfungsi untuk memanggil ontologi dan membentuk objek java yang siap untuk di query. Pada kelas OntologyLoader juga dilakukan instansiasi objek \emph{reasoner} yang berfungsi untuk melakukan reasoning terhadap ontologi apabila diperlukan. Kelas OntologyQuery befungsi untuk melakukan operasi query terhadap objek ontologi yang telah dibuat dalam kelas OntologyLoader.
 
 \begin{figure}[ht]
     \centering
@@ -93,7 +93,7 @@ Struktur modul pemrosesan ontologi ditunjukan dalam gambar \ref{fig:sub_sistem_o
     \label{fig:sub_sistem_ontologi}
 \end{figure}
 
-Sebelum melakukan proses query, pertama-tama sistem akan melakukan proses pemeriksaan terhadap kelas ontologi berdasarkan \emph{parse tree} yang telah dibentuk. Pemeriksaan ini bertujuan untuk mengetahui apakah kelas yang akan dikenakan query memiliki aturan restriksi atau tidak. Jika kelas memiliki aturan restriksi, maka sistem akan memberikan tanda \emph{(flag) advanceSearch}. \emph{Flag} ini berfungsi untuk mengindikasikan bahwa selain query SPARQL nantinya juga akan dilakukan proses inferensi untuk mencari \emph{fact} yang mungkin secara implisit terdapat dalam ontologi tersebut. Hal ini dilakukan karena query SPARQL tidak dapat mencari fakta-fakta implisit yang terdapat dalam ontologi. Sebagi contoh, misalnya dalam kelas ``Bupati'', kelas ini memiliki definisi seperti yang terlihat dalam gambar \ref{fig:definisi_kelas_bupati}.
+Pertama-tama sistem akan melakukan proses pemeriksaan terhadap kelas ontologi berdasarkan \emph{parse tree} yang telah dibentuk. Pemeriksaan ini bertujuan untuk mengetahui apakah kelas yang akan dikenakan query memiliki aturan restriksi atau tidak. Jika kelas memiliki aturan restriksi, maka sistem akan memberikan tanda \emph{(flag) advanceSearch}. \emph{Flag} ini berfungsi untuk mengindikasikan bahwa selain query SPARQL nantinya juga akan dilakukan proses \emph{reasoning} dengan menggunakan \emph{reasoning engine} yang telah diinstansiasi dalam kelas OntologyLeader. Proses \emph{reasoning} bertujuan untuk mencari \emph{fact} yang mungkin secara implisit terdapat dalam ontologi tersebut. Hal ini dilakukan karena query SPARQL tidak dapat mencari fakta-fakta implisit yang terdapat dalam ontologi. Sebagi contoh, misalnya dalam kelas ``Bupati'', kelas ini memiliki definisi seperti yang terlihat dalam gambar \ref{fig:definisi_kelas_bupati}.
 
 \begin{figure}[t]
     \centering

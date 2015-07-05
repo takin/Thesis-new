@@ -1,161 +1,292 @@
 \section{Perancangan Ontologi}
 Sistem yang akan dibangun ini nantinya akan mengguakan tiga buah ontologi yang berbeda, masing-masing ontologi dapat diakses sercara terpisah melalui protokol http.
 
-\emph{Term} yang akan digunakan untuk membangun ketiga ontologi ini mengacu pada \emph{term} yang telah tersedia pada dbpedia versi bahasa Indoensia. Apabila terdapat \emph{term} yang tidak ada dalam dbpedia, maka akan dibangun term sendiri dengan menggunakan \emph{namespace} http://www.ntbprov.go.id/resource/<nama\_term>. Format pembuatan <nama\_term> mengacu pada sistem penamaan \emph{resource} pada dbpedia.
+\emph{Term} yang akan digunakan untuk membangun ketiga ontologi ini mengacu pada \emph{term} yang telah tersedia pada dbpedia versi bahasa Indoensia. Apabila terdapat \emph{term} yang tidak ada dalam dbpedia, maka akan dibuat dengan menggunakan \emph{namespace} http://www.ntbprov.go.id/resource/<nama\_term>. Format pembuatan <nama\_term> mengacu pada sistem penamaan \emph{resource} pada dbpedia agar seragam.
 
 \subsection{Ontologi pariwisata}
-Ontologi pariwisata secara spesifik menyimpan fakta-fakta mengenai informasi pariwisata dari masing-masing kabupaten dan kota. Ontologi ini diberi nama ntbpar.owl. Kelas serta properti yang terdapat dalam ontologi ntbpar.owl ditunjukkan pada tabel \ref{table:ontopar_class}
+Ontologi pariwisata secara spesifik menyimpan fakta-fakta mengenai informasi pariwisata dari masing-masing kabupaten dan kota. Ontologi ini diberi nama ntbpar.owl. Kelas 
 
-\begin{table}[ht]
-	\caption{Daftar kelas dalam ontologi pariwisata}
-	\label{table:ontopar_class}
-	\begin{tabularx}{\textwidth}{|c|X|X|}
-		\hline
-		No & Nama Kelas & Keterangan \\
-		\hline
-		1 & Bar & - \\
-		\hline
-		2 & Budaya & - \\
-		\hline
-		3 & Desa & - \\
-		\hline
-		4 & Hotel & - \\
-		\hline
-		5 & Losmen & - \\
-		\hline
-		6 & Villa & - \\
-		\hline
-		7 & Kerajinan & - \\
-		\hline
-		8 & Kuliner & - \\
-		\hline
-		9 & Makanan & - \\
-		\hline
-		10 & Minuman & - \\
-		\hline
-		11 & Pariwisata & - \\
-		\hline
-		12 & Desa\_wisata & - \\
-		\hline
-		13 & Desa\_adat & - \\
-		\hline
-		14 & Ekowisata & - \\
-		\hline
-		15 & Wisata\_alam & - \\
-		\hline
-		16 & Air\_terjun & - \\
-		\hline
-		17 & Gili & - \\
-		\hline
-		18 & Pulau & - \\
-		\hline
-		19 & Gunung & - \\
-		\hline
-		20 & Pantai & - \\
-		\hline
-		21 & Wisata\_budaya & - \\
-		\hline
-		22 & Restoran & - \\
-		\hline
-		23 & Spa & - \\
-		\hline
+\begin{table}[tb]
+	\caption{Daftar \emph{parent class} ontologi pariwisata}
+	\label{tab:parent_class_ontopar}
+	\centering
+
+	\begin{tabularx}{\textwidth}{|c|l|X|}
+	\hline
+
+	\hline
+	\textbf{No} & \textbf{Nama Kelas} & \textbf{Keterangan} \\
+	\hline
+		1 & Bar & Disjoint dengan \emph{Budaya, Desa, Hotel, Kerajinan, Kuliner, Pariwisata, Restoran} dan \emph{Spa} serta memiliki restriksi\\
+	\hline
+		2 & Budaya & Disjoint dengan \emph{Bar, Desa, Hotel, Kerajinan, Kuliner, Pariwisata, Restoran} dan \emph{Spa}\\
+	\hline
+		3 & Desa & Disjoint dengan \emph{Budaya, Bar, Hotel, Kerajinan, Kuliner, Pariwisata, Restoran} dan \emph{Spa}\\
+	\hline
+		4 & Hotel & Disjoint dengan \emph{Budaya, Bar, Desa, Kerajinan, Kuliner, Pariwisata, Restoran} dan \emph{Spa}\\
+	\hline
+		5 & Kerajinan & Disjoint dengan \emph{Budaya, Bar, Hotel, Desa, Kuliner, Pariwisata, Restoran} dan \emph{Spa}\\
+	\hline
+		6 & Kuliner & Disjoint dengan \emph{Budaya, Bar, Hotel, Kerajinan, Desa, Pariwisata, Restoran} dan \emph{Spa}\\
+	\hline
+		7 & Pariwisata & Disjoint dengan \emph{Budaya, Bar, Hotel, Kerajinan, Kuliner, Desa, Restoran} dan \emph{Spa}\\
+	\hline
+		8 & Restoran & Disjoint dengan \emph{Budaya, Bar, Hotel, Kerajinan, Kuliner, Pariwisata, Desa} dan \emph{Spa}\\
+	\hline 
+		9 & Spa & Disjoint dengan \emph{Budaya, Bar, Hotel, Kerajinan, Kuliner, Pariwisata, Restoran} dan \emph{Desa}\\
+	\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[tb]
+	\caption{Daftar \emph{sub class} ontologi pariwisata}
+	\label{tab:sub_class_ontopar}
+	\centering
+
+	\begin{tabularx}{\textwidth}{|c|l|X|}
+	\hline
+
+	\hline
+	\textbf{No} & \textbf{Nama Kelas} & \textbf{Keterangan} \\
+	\hline
+		1 & Losmen & Sub kelas \emph{Hotel} dan disjoint dengan \emph{Resort} dan \emph{Villa}\\
+	\hline
+		2 & Resort & Sub kelas \emph{Hotel} dan disjoint dengan \emph{Losmen} dan \emph{Villa}\\
+	\hline
+		3 & Villa & Sub kelas \emph{Hotel} dan disjoint dengan \emph{Resort} dan \emph{Losmen}\\
+	\hline
+		4 & Makanan & Sub kelas \emph{Kuliner} dan disjoint dengan \emph{Minuman}\\
+	\hline
+		5 & Minuman & Sub kelas \emph{Kuliner} dan disjoint dengan \emph{Makanan}\\
+	\hline
+		6 & Desa\_wisata & Sub kelas \emph{Pariwisata}\\
+	\hline
+		7 & Desa\_adat & Sub kelas \emph{Desa\_wisata} dan memiliki restriksi\\
+	\hline
+		8 & Ekowisata & Sub kelas \emph{Pariwisata} dan ekivalen dengan \emph{Wisata\_alam} dan disjoint dengan \emph{Wisata\_budaya}\\
+	\hline
+		9 & Wisata\_alam & Sub kelas \emph{Pariwisata} dan ekivalen dengan \emph{Ekowisata} dan disjoint dengan \emph{Wisata\_budaya}\\
+	\hline 
+	   10 & Wisata\_budaya & Sub kelas \emph{Pariwisata} dan disjoint dengan \emph{Wisata\_budaya} dan \emph{Ekowisata}\\
+	\hline
+	   11 & Air\_terjun & Sub kelas \emph{Wisata\_alam} dan disjoint dengan \emph{Pantai}\\
+	\hline
+	   12 & Gili & Sub kelas \emph{Wisata\_alam} dan ekivalen dengan \emph{Pulau} \\
+	\hline
+	   13 & Pulau & Sub kelas \emph{Wisata\_alam} dan ekivalen dengan \emph{Gili}\\
+	\hline 
+	   14 & Gunung & Sub kelas \emph{Wisata\_alam} dan disjoint dengan \emph{Pantai}\\
+	\hline
+	   15 & Pantai & Sub kelas \emph{Wisata\_alam} dan disjoint dengan \emph{Air\_terjun} dan \emph{Gunung}\\
+	\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[tb]
+	\caption{Daftar properti ontologi pariwisata}
+	\label{tab:ontopar_property}
+	\centering
+
+	\begin{tabularx}{\textwidth}{|c|l|l|X|X|}
+	\hline
+
+	\hline
+	\textbf{No} & \textbf{Nama} & \textbf{Domain} & \textbf{Range} & \textbf{Keterangan} \\
+	\hline
+		1 & hasBudaya & \emph{Desa} & \emph{Budaya} & - \\
+	\hline
+		2 & hasDestination & \emph{Desa} & \emph{Pariwisata} & - \\
+	\hline
+		3 & hasMenu & \emph{Restoran} & \emph{Makanan, Minuman} & - \\
+	\hline
+		4 & hasProduct & \emph{Desa} & \emph{Kerajinan, Kuliner, Budaya, Pariwisata} & - \\
+	\hline
+		5 & tarif & \emph{OWL:Thing} & \emph{Xsd:String} & - \\
+	\hline
 	\end{tabularx}
 \end{table}
 
 \subsection{Ontologi geografi}
-Ontologi geografi secara spesifik menyimpan fakta-fakta mengenai informasi geografis dari masing-masing kabupaten dan kota. Kelas serta properti yang terdapat pada ontologi ini ditunjukkan dalam tabel \ref{table:ontogeo_class}
+Ontologi geografi secara spesifik menyimpan fakta-fakta mengenai informasi geografis dari masing-masing kabupaten dan kota. Kelas serta properti yang terdapat pada ontologi ini ditunjukkan dalam tabel
 
 \begin{table}[ht]
-	\caption{Daftar kelas ontologi geografi}
-	\label{table:ontogeo_class}
-	\begin{tabularx}{\textwidth}{|c|X|X|}
+	\caption{Daftar \emph{parent class} ontologi geografi}
+	\label{table:parent_class_ontogeo}
+	\begin{tabularx}{\textwidth}{|c|l|X|}
 		\hline
-		No & Nama Kelas & Keterangan \\
+		\textbf{No} & \textbf{Nama Kelas} & \textbf{Keterangan} \\
 		\hline
-		1 & Desa & - \\
+		1 & Desa & Disjoint dengan \emph{Ibu\_kota, Kabupaten, Kecamatan, Komoditas, Kota} dan \emph{Provinsi} \\
 		\hline
-		2 & Ibu\_kota & - \\
+		2 & Ibu\_kota & Disjoint dengan \emph{Desa, Kabupaten, Kecamatan, Komoditas} dan \emph{Provinsi} \\
 		\hline
-		3 & Kabupaten & - \\
+		3 & Kabupaten & Disjoint dengan \emph{Ibu\_kota, Desa, Kecamatan, Komoditas, Kota} dan \emph{Provinsi} \\
 		\hline
-		4 & Kecamatan & - \\
+		4 & Kecamatan & Disjoint dengan \emph{Ibu\_kota, Kabupaten, Desa, Komoditas, Kota} dan \emph{Provinsi} \\
 		\hline
-		5 & Komoditas & - \\
+		5 & Komoditas & Disjoint dengan \emph{Ibu\_kota, Kabupaten, Kecamatan, Desa, Kota} dan \emph{Provinsi} \\
 		\hline
-		6 & Perikanan & - \\
+		6 & Kota & Disjoint dengan \emph{Desa, Kabupaten, Kecamatan, Komoditas} dan \emph{Provinsi} \\
 		\hline
-		7 & Perkebunan & - \\
-		\hline
-		8 & Pertambangan & - \\
-		\hline
-		9 & Pertanian & - \\
-		\hline
-		10 & Kota & - \\
-		\hline
-		11 & Provinsi & - \\
+		7 & Provinsi & Disjoint dengan \emph{Ibu\_kota, Kabupaten, Kecamatan, Komoditas, Kota} dan \emph{Desa} \\
 		\hline
 	\end{tabularx}
 \end{table}
 
+\begin{table}[ht]
+	\caption{Daftar \emph{sub class} ontologi geografi}
+	\label{table:sub_class_ontogeo}
+	\begin{tabularx}{\textwidth}{|c|l|X|}
+		\hline
+		\textbf{No} & \textbf{Nama Kelas} & \textbf{Keterangan} \\
+		\hline
+		1 & Perikanan & Sub kelas \emph{Komoditas} dan disjoint dengan \emph{Perkebunan, Pertambangan} dan \emph{Pertanian}\\
+		\hline
+		2 & Perkebunan & Sub kelas \emph{Komoditas} dan disjoint dengan \emph{Perikanan, Pertambangan} dan \emph{Pertanian} \\
+		\hline
+		3 & Pertambangan & Sub kelas \emph{Komoditas} dan disjoint dengan \emph{Perkebunan, Perikanan} dan \emph{Pertanian} \\
+		\hline
+		4 & Pertanian & Sub kelas \emph{Komoditas} dan disjoint dengan \emph{Perkebunan, Pertambangan} dan \emph{Perikanan} \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[tb]
+	\caption{Daftar properti ontologi geografi}
+	\label{tab:ontogeo_property}
+	\centering
+
+	\begin{tabularx}{\textwidth}{|c|l|X|X|X|}
+	\hline
+
+	\hline
+	\textbf{No} & \textbf{Nama} & \textbf{Domain} & \textbf{Range} & \textbf{Keterangan} \\
+	\hline
+		1 & hasIbuKota & \emph{Provinsi, Kabupaten, Kecamatan, Kota} & \emph{Ibu\_kota} & - \\
+	\hline
+		2 & hasKomoditas & \emph{OWL:Thing} & \emph{Komoditas} & - \\
+	\hline
+		3 & hasPart &\emph{Provinsi, Kabupaten, Kecamatan, Kota} & \emph{Provinsi, Kabupaten, Kecamatan, Kota, Desa} & - \\
+	\hline
+		4 & isPartOf & \emph{Desa, Provinsi, Kabupaten, Kecamatan, Kota} & \emph{Provinsi, Kabupaten, Kecamatan, Kota} & - \\
+	\hline
+		5 & hasLuasWilayah & \emph{OWL:Thing} & \emph{Xsd:String} & - \\
+	\hline
+		6 & hasPopulasi & \emph{OWL:Thing} & \emph{Xsd:String} & - \\
+	\hline
+	\end{tabularx}
+\end{table}
+
+
 \subsection{Ontologi Pemerintahan}
-Ontologi pemerintahan atau ontogov.owl secara spesifik menyimpan fakta-fakta mengenai informasi pemerintahan di tingkat kabupaten, termasuk dinas, kecamatan dan desa. Daftar kelas serta properti yang terdapat dalam ontologi ini ditunjukkan dalam tabel \ref{table:ontogeo_class}
+Ontologi pemerintahan atau ontogov.owl secara spesifik menyimpan fakta-fakta mengenai informasi pemerintahan di tingkat kabupaten, termasuk dinas, kecamatan dan desa. Daftar kelas serta properti yang terdapat dalam ontologi ini ditunjukkan dalam tabel
 
 \begin{table}[hb]
-	\caption{Daftar kelas ontologi pemerintahan}
-	\label{table:ontogov_class}
-	\begin{tabularx}{\textwidth}{|c|X|X|}
+	\caption{Daftar \emph{parent class} ontologi pemerintahan}
+	\label{table:parent_class_onogov}
+	\begin{tabularx}{\textwidth}{|c|l|X|}
 		\hline
-		No & Nama Kelas & Keterangan \\
+			\textbf{No} & \textbf{Nama Kelas} & \textbf{Keterangan} \\
 		\hline
-		1 & Organization & - \\
+			1 & Organization & - \\
 		\hline
-		2 & Pemerintah\_daerah & - \\
+			2 & Person & - \\
 		\hline
-		3 & Badan & - \\
+			3 & Pegawai\_negeri & Sub kelas dari \emph{Person} dan Ekivalen dengan \emph{PNS} \\
 		\hline
-		4 & Biro & - \\
+			4 & PNS & Sub kelas dari \emph{Person} dan Ekivalen dengan \emph{Pegawai\_negeri} \\
 		\hline
-		5 & Desa & - \\
+	\end{tabularx}
+\end{table}
+
+\begin{table}[hb]
+	\caption{Daftar \emph{sub class} ontologi pemerintahan}
+	\label{table:sub_class_ontogov}
+	\begin{tabularx}{\textwidth}{|c|l|X|}
 		\hline
-		5 & Dinas & - \\
+			\textbf{No} & \textbf{Nama Kelas} & \textbf{Keterangan} \\
 		\hline
-		7 & Kabupaten & - \\
+			1 & Pemerintah\_daerah & Sub kelas dari \emph{Organization} \\
 		\hline
-		8 & Kecamatan & - \\
+			2 & Badan & Sub kelas dari \emph{Pemerintah\_daerah} \\
 		\hline
-		9 & Kota & - \\
+			3 & Biro & Sub kelas dari \emph{Pemerintah\_daerah} \\
 		\hline
-		10 & Provinsi & - \\
+			4 & Desa & Sub kelas dari \emph{Pemerintah\_daerah} \\
 		\hline
-		11 & Person & - \\
+			5 & Dinas & Sub kelas dari \emph{Pemerintah\_daerah} \\
 		\hline
-		12 & Bupati & - \\
+			6 & Kabupaten & Sub kelas dari \emph{Pemerintah\_daerah} \\
 		\hline
-		13 & Gubernur & - \\
+			7 & Kecamatan & Sub kelas dari \emph{Pemerintah\_daerah} \\
 		\hline
-		14 & Kepala\_desa & - \\
+			8 & Kota & Sub kelas dari \emph{Pemerintah\_daerah} \\
 		\hline
-		15 & Pegawai\_negeri & - \\
+			9 & Provinsi & Sub kelas dari \emph{Pemerintah\_daerah} \\
 		\hline
-		16 & PNS & - \\
+		   10 & Bupati & Sub kelas dari \emph{Person} \\
 		\hline
-		17 & Camat & - \\
+		   11 & Gubernur & Sub kelas dari \emph{Person} \\
 		\hline
-		18 & Kepala\_badan & - \\
+		   12 & Kepala\_desa & Sub kelas dari \emph{Person} \\
 		\hline
-		19 & Kepala\_biro & - \\
+		   13 & Camat & Sub kelas dari \emph{Pegawai\_negeri} dan \emph{PNS} \\
 		\hline
-		20 & Kepala\_dinas & - \\
+		   14 & Kepala\_badan & Sub kelas dari \emph{Pegawai\_negeri} dan \emph{PNS} \\
 		\hline
-		21 & Wakil\_camat & - \\
+		   15 & Kepala\_biro & Sub kelas dari \emph{Pegawai\_negeri} dan \emph{PNS} \\
 		\hline
-		22 & Wakil\_bupati & - \\
+		   16 & Kepala\_dinas & Sub kelas dari \emph{Pegawai\_negeri} dan \emph{PNS} \\
 		\hline
-		23 & Wakil\_gubernur & - \\
+		   17 & Wakil\_camat & Sub kelas dari \emph{Pegawai\_negeri} dan \emph{PNS} \\
 		\hline
-		24 & Wakil\_wali\_kota & - \\
+		   18 & Wakil\_bupati & Sub kelas dari \emph{Person} \\
 		\hline
-		25 & Wali\_kota & - \\
+		   19 & Wakil\_gubernur & Sub kelas dari \emph{Person} \\
 		\hline
+		   20 & Wakil\_wali\_kota & Sub kelas dari \emph{Person} \\
+		\hline
+		   21 & Wali\_kota & Sub kelas dari \emph{Person} \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\begin{table}[tb]
+	\caption{Daftar e}
+	\label{tab:ontogov_property}
+	\centering
+
+	\begin{tabularx}{\textwidth}{|c|l|l|l|X|}
+	\hline
+
+	\hline
+	\textbf{No} & \textbf{Nama} & \textbf{Domain} & \textbf{Range} & \textbf{Keterangan} \\
+	\hline
+		1 & hasHead & \emph{Organization} & \emph{Person} & Inverse dari \emph{headOf} \\
+	\hline
+		2 & headOf & \emph{Person} & \emph{Organization} & Inverse dari \emph{hasHead} \\
+	\hline
+		3 & hasMember & \emph{Organization} & \emph{Person} & - \\
+	\hline
+		4 & memberOf & \emph{Person} & \emph{Organization} & - \\
+	\hline
+		5 & hasVice & \emph{Person} & \emph{Person} & - \\
+	\hline
+		6 & viceOf & \emph{Person} & \emph{Person} & - \\
+	\hline
+		7 & isPartOf & \emph{Organization} & \emph{Organization} & Properti ini bersifat \emph{transitive} \\
+	\hline
+		8 & address & \emph{OWL:Thing} & \emph{XSD:String} & - \\
+	\hline
+		9 & birthday & \emph{Person} & \emph{XSD:String} & - \\
+	\hline
+		10 & homepage & \emph{Organization} & \emph{XSD:String} & - \\
+	\hline
+		11 & logo & \emph{Organization} & \emph{XSD:String} & - \\
+	\hline
+		12 & name & \emph{OWL:Thing} & \emph{XSD:String} & - \\
+	\hline
+		13 & phone & \emph{OWL:Thing} & \emph{XSD:String} & - \\
+	\hline
 	\end{tabularx}
 \end{table}
