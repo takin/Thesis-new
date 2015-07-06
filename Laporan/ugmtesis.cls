@@ -266,7 +266,7 @@
       \vspace{1.5cm}
        \if@msthesis%
         {\normalfont Diajukan untuk memenuhi salah satu syarat memperoleh derajat\\
-         Master of Computer Science \@program{}}\\
+         Master of Computer Science}\\
        \else
         {\normalfont Usulan Penelitian}\\
        \fi
@@ -332,7 +332,7 @@ Pembimbing&Penguji
 
 \vspace{0.5cm}
 Tesis ini telah diterima sebagai salah satu persyaratan\\
-Untuk memperoleh gelar Master of Science Ilmu Fisika\\
+Untuk memperoleh gelar Master of Computer Science\\
 Tanggal \expandafter{\@examdate}\\
 \vspace{1.5cm}
 \@headprogram\\

@@ -1,12 +1,12 @@
 \section{Perancangan Ontologi}
-Sistem yang akan dibangun ini nantinya akan mengguakan tiga buah ontologi yang berbeda, masing-masing ontologi dapat diakses sercara terpisah melalui protokol http.
+Sistem yang akan dibangun ini nantinya akan menggunakan tiga buah ontologi yang berbeda, masing-masing ontologi dapat diakses sercara terpisah melalui protokol http.
 
 \emph{Term} yang akan digunakan untuk membangun ketiga ontologi ini mengacu pada \emph{term} yang telah tersedia pada dbpedia versi bahasa Indoensia. Apabila terdapat \emph{term} yang tidak ada dalam dbpedia, maka akan dibuat dengan menggunakan \emph{namespace} http://www.ntbprov.go.id/resource/<nama\_term>. Format pembuatan <nama\_term> mengacu pada sistem penamaan \emph{resource} pada dbpedia agar seragam.
 
 \subsection{Ontologi pariwisata}
-Ontologi pariwisata secara spesifik menyimpan fakta-fakta mengenai informasi pariwisata dari masing-masing kabupaten dan kota. Ontologi ini diberi nama ntbpar.owl. Kelas 
+Ontologi pariwisata secara spesifik menyimpan fakta-fakta mengenai informasi pariwisata dari masing-masing kabupaten dan kota. \emph{Parent class} pada ontologi pariwisata terdiri dari sembilan buah kelas seperti terlihat dalam tabel \ref{tab:parent_class_ontopar}. Selain itu, ontologi pariwisata juga memiliki \emph{sub class} pada beberapa \emph{parent class}. Daftar sub kelas dalam ontologi pariwisata yang akan dikembangkan dalam penelitian ini ditunjukkan dalam tabel \ref{tab:sub_class_ontopar}.
 
-\begin{table}[tb]
+\begin{table}[hb]
 	\caption{Daftar \emph{parent class} ontologi pariwisata}
 	\label{tab:parent_class_ontopar}
 	\centering
@@ -38,7 +38,13 @@ Ontologi pariwisata secara spesifik menyimpan fakta-fakta mengenai informasi par
 	\end{tabularx}
 \end{table}
 
-\begin{table}[tb]
+Cakupan informasi yang ingin dicapai dalam ontologi pariwisata yang akan dikembangkan dalam penelitian ini meliputi infromasi hotel, destinasi wisata alam, destinasi wisata budaya, wisata kuliner serta kerajinan tradisional yang terdapat di masing-masing kabupaten.
+
+Kelas \emph{Bar} merupakan kelas untuk merepresentasikan konsep bar yang banyak terdapat di lokasi wisata seperti di kawasan Senggigi, Kuta dan Gili. Kelas ini bersifat \emph{disjoint} dengan kelas lain yang setara seperti ditunjukkan dalam tabel \ref{tab:parent_class_ontopar} yaitu kelas \emph{Budaya, Desa, Hotel, Kerajinan, Kuliner, Pariwisata, Restoran} dan \emph{Spa}. Selain itu, kelas \emph{Bar} juga memiliki restriksi untuk mendefinisikan \emph{instance} yang memenuhi kriteria sebagai sebuah bar. Kelas lain yang juga memiliki restriksi adalah \emph{Restoran, Desa\_adat} dan \emph{Resort}.
+
+Kelas \emph{Budaya} digunakan untuk merepresentasikan informasi tentang budaya yang dimiliki oleh masing-masing kabupaten dalam penelitian ini, sedangkan kelas \emph{Desa} disertakan untuk menyimpan informasi mengenai nama desa yang memiliki destinasi wisata baik itu berupa wisata alam, pantai maupun wisata budaya.
+
+\begin{table}[hb]
 	\caption{Daftar \emph{sub class} ontologi pariwisata}
 	\label{tab:sub_class_ontopar}
 	\centering
@@ -82,6 +88,8 @@ Ontologi pariwisata secara spesifik menyimpan fakta-fakta mengenai informasi par
 	\end{tabularx}
 \end{table}
 
+Kelas \emph{Pariwisata} memiliki empat buah sub kelas yaitu \emph{Desa\_wisata, Ekowisata, Wisata\_alam} dan \emph{Wisata\_budaya}. Desa wisata di definisikan sebagai desa yang menawarkan produk kerajinan tradisional atau memiliki kebudaya khas tradisional, untuk itu kelas \emph{Desa\_wisata} memiliki restriksi untuk menakomodasi kriteria ini. Berbeda dengan kelas \emph{Desa\_wisata}, kelas \emph{Desa\_adat} secara spesifik merepresentasikan informasi mengenai desa yang memiliki kebudayaan tradisional namun tidak memiliki produk kerajinan. Namun demikian, desa adat juga termasuk ke dalam kategori desa wisata, sehingga kelas \emph{Desa\_adat} menjadi sub kelas dari \emph{Desa\_wisata} namun dengan restriksi yang lebih sesifik. \emph{Wisata\_alam} memiliki lima buah sub kelas masing-masing \emph{Air\_terjun, Gili, Pulau, Gunung} dan \emph{Pantai}. \emph{Gili} dan \emph{Pulau} merupakan dua buah kelas yang bersifat ekivalen sama dengan kelas \emph{Ekowisata} dan \emph{Wisata\_alam}.
+
 \begin{table}[tb]
 	\caption{Daftar properti ontologi pariwisata}
 	\label{tab:ontopar_property}
@@ -97,17 +105,27 @@ Ontologi pariwisata secara spesifik menyimpan fakta-fakta mengenai informasi par
 	\hline
 		2 & hasDestination & \emph{Desa} & \emph{Pariwisata} & - \\
 	\hline
-		3 & hasMenu & \emph{Restoran} & \emph{Makanan, Minuman} & - \\
+		3 & hasMenu & \emph{Restoran, Bar} & \emph{Makanan, Minuman} & - \\
 	\hline
-		4 & hasProduct & \emph{Desa} & \emph{Kerajinan, Kuliner, Budaya, Pariwisata} & - \\
+		4 & hasProduct & \emph{Desa} & \emph{Kerajinan, Kuliner} & - \\
 	\hline
 		5 & tarif & \emph{OWL:Thing} & \emph{Xsd:String} & - \\
 	\hline
 	\end{tabularx}
 \end{table}
 
+Ontologi pariwisata hanya memiliki lia buah properti seperti yang terlihat dalam tabel \ref{tab:ontopar_property} yaitu terdiri dari empat buah \emph{Object Property} dan satu buah \emph{Datatype Property}. \emph{hasMenu} digunakan untuk merelasikan kelas \emph{Restoran} dengan kelas \emph{Makanan} dan \emph{Minuman}, selain itu juga digunakan untuk merelasikan kelas \emph{Bar} dengan \emph{Minuman}.
+
+\emph{Datatype Property} tarif bersifat universal karena properti ini digunakan untuk merepresentasikan nomnal harga untuk beragam kelas seperti produk kerajinan, sewa hotel dan lain-lain, oleh karena itu domain properti \emph{tarif} adalah \emph{OWL:Thing}.
+
 \subsection{Ontologi geografi}
-Ontologi geografi secara spesifik menyimpan fakta-fakta mengenai informasi geografis dari masing-masing kabupaten dan kota. Kelas serta properti yang terdapat pada ontologi ini ditunjukkan dalam tabel
+Ontologi geografi secara spesifik menyimpan fakta-fakta mengenai informasi geografis dari masing-masing kabupaten dan kota. Adapun \emph{parent class} yang terdapat dalam ontologi geografi ditunjukkan dalam tabel \ref{table:parent_class_ontogeo}.
+
+Cakupan informasi yang ingin disimpan dalam ontologi geografis adalah seputar nama-nama desa, kecamatan, kabupaten dan kota yang terdapat pada masing-masing kabupaten, selain itu juga akan disimpan mengenai jenis-jenis pendapatan asli masing-masing daerah. Jenis-jenis pendapatan dituangkan dalam sub kelas dari \emph{Komoditas}. Adapun sub kelas dari komoditas ditunjukkan dalam tabel \ref{table:sub_class_ontogeo}.
+
+\emph{Parent class} pada ontologi geografi masing-masing bersifat \emph{disjoint} satu sama lain untuk mengindikasikan bahwa \emph{instance} sebuah kelas tidak dapat menjadi \emph{instance} untuk kelas lainnya yang berarti juga bahwa sebuah desa misalnya tidak dapat menjadi nama bagi sebuah kecamatan dan sebaliknya.
+
+Sama halnya dengan \emph{parent class}, sub kelas dalam ontologi parwisata yaitu sub kelas dari \emph{Komoditas} juga bersifat \emph{disjoint} satu dengan lainnya karena masing-masing komoditas merupakan sebuah bentuk komoditas yang spesifik.
 
 \begin{table}[ht]
 	\caption{Daftar \emph{parent class} ontologi geografi}
@@ -164,7 +182,7 @@ Ontologi geografi secara spesifik menyimpan fakta-fakta mengenai informasi geogr
 	\hline
 		1 & hasIbuKota & \emph{Provinsi, Kabupaten, Kecamatan, Kota} & \emph{Ibu\_kota} & - \\
 	\hline
-		2 & hasKomoditas & \emph{OWL:Thing} & \emph{Komoditas} & - \\
+		2 & hasKomoditas & \emph{Provinsi, Kabupaten, Kecamatan, Kota, Desa} & \emph{Komoditas} & - \\
 	\hline
 		3 & hasPart &\emph{Provinsi, Kabupaten, Kecamatan, Kota} & \emph{Provinsi, Kabupaten, Kecamatan, Kota, Desa} & - \\
 	\hline
@@ -177,9 +195,13 @@ Ontologi geografi secara spesifik menyimpan fakta-fakta mengenai informasi geogr
 	\end{tabularx}
 \end{table}
 
+Ontologi geografi juga memiliki properti seperti yang disajikan dalam tabel \ref{tab:ontogeo_property}. Properti \emph{hasIbuKota} berfungsi untuk merepresentasikan hubungan antara kelas \emph{Provinsi, Kabupaten, Kecamatan} dan \emph{Kota} dengan kelas \emph{Ibu\_kota} sedangkan properti \emph{hasKomoditas} merepresentasikan hubungan antara kelas \emph{Provinsi, Kabupaten, Kecamatan, Kota} dan \emph{Desa} dengan kelas \emph{Komoditas} sehingga dengan demikian properti \emph{hasKomoditas} juga secara tidak langsung merepresentasikan hubungan antara kelas \emph{Provinsi, Kabupaten, Kecamatan, Kota} dan \emph{Desa} dengan semua sub kelas dari \emph{Komoditas}.
+
+Properti \emph{hasPart} dan \emph{isPartOf} bersifat transitif untuk merepresentasikan hubungan keterkaitan antara desa, kecataman, kabupaten dan provinsi. Sehingga apabila sebuah desa memiliki hubungan \emph{isPartOf} dengan sebuah kecamatan dan kecamatan terebut memiliki hubungan \emph{isPartOf} dengan sebuah kabupaten maka otomatis desa tersebut juga memiliki hubungan \emph{isPartOf} dengan kabupaten yang bersangkutan. Properti \emph{hasPart} merupakan \emph{inverse} dari properti \emph{isPartOf}.
+
 
 \subsection{Ontologi Pemerintahan}
-Ontologi pemerintahan atau ontogov.owl secara spesifik menyimpan fakta-fakta mengenai informasi pemerintahan di tingkat kabupaten, termasuk dinas, kecamatan dan desa. Daftar kelas serta properti yang terdapat dalam ontologi ini ditunjukkan dalam tabel
+Ontologi pemerintahan secara spesifik menyimpan fakta-fakta mengenai informasi pemerintahan di tingkat kabupaten, termasuk dinas, kecamatan dan desa. Daftar kelas serta properti yang terdapat dalam ontologi ini ditunjukkan dalam tabel \ref{table:parent_class_onogov}.
 
 \begin{table}[hb]
 	\caption{Daftar \emph{parent class} ontologi pemerintahan}
@@ -199,7 +221,9 @@ Ontologi pemerintahan atau ontogov.owl secara spesifik menyimpan fakta-fakta men
 	\end{tabularx}
 \end{table}
 
-\begin{table}[hb]
+Ontologi pemerintahan terdiri dari empat buah \emph{parent class} yaitu \emph{Organization, Person, Pegawai\_negeri} dan \emph{PNS}. Kelas \emph{PNS} dan \emph{Pegawai\_negeri} bersifat ekivalen dan keduanya memiliki restriksi yang menyatakan bahwa pegawai negeri atau PNS adalah \emph{instance} dari kelas \emph{Person} yang bukan merupakan \emph{instance} dari kelas \emph{Bupati, Wakil\_bupati, Gubernur, Wali\_gubernur, Wali\_kota, Wakil\_wali\_kota} atau \emph{Kepala\_desa}. Hal ini berdasarkan fakta bahwa \emph{Bupati, Wakil\_bupati, Gubernur, Wali\_gubernur, Wali\_kota, Wakil\_wali\_kota} dan \emph{Kepala\_desa} adalah hanya jabatan politik.
+
+\begin{table}[ht]
 	\caption{Daftar \emph{sub class} ontologi pemerintahan}
 	\label{table:sub_class_ontogov}
 	\begin{tabularx}{\textwidth}{|c|l|X|}
@@ -251,8 +275,10 @@ Ontologi pemerintahan atau ontogov.owl secara spesifik menyimpan fakta-fakta men
 	\end{tabularx}
 \end{table}
 
-\begin{table}[tb]
-	\caption{Daftar e}
+Kelas \emph{Organization} terdiri dari satu buah sub kelas yaitu \emph{Pemerintah\_daerah}. Kelas \emph{Pemerintah\_daerah} memiliki delapan buah sub kelas seperti yang diperlihatkan dalam tabel \ref{table:sub_class_ontogov} yaitu \emph{Badan, Biro, Desa, Dinas, Kabupaten, Kecamatan, Kota} dan \emph{Provinsi}. Kelas \emph{Person} juga terdiri dari delapan buah sub kelas yaitu \emph{Bupati, Gubernur, Kepala\_desa, Pegawai\_negeri, Wakil\_bupati, Wakil\_gubernur, Walli\_kota} dan \emph{Wakil\_wali\_kota}, sedangkan kelas \emph{Pegawai\_negeri} memiliki lima buah sub kelas yaitu \emph{Camat, Kepala\_badan, Kepala\_biro, Kepala\_dinas} dan \emph{Wakil\_camat}. Restriksi juga diberikan kepada semua sub kelas \emph{Person} untuk memberikan informasi semantik mengenai \emph{role} masing-masing instance dari kelas tersebut.
+
+\begin{table}[t]
+	\caption{Daftar properti ontologi pemerintahan}
 	\label{tab:ontogov_property}
 	\centering
 
@@ -290,3 +316,5 @@ Ontologi pemerintahan atau ontogov.owl secara spesifik menyimpan fakta-fakta men
 	\hline
 	\end{tabularx}
 \end{table}
+
+Ontologi pemerintahan juga memiliki properti berupa \emph{Object property} dan juga \emph{Datatype property} seperti yang disajikan dalam tabel \ref{tab:ontogov_property}. properti \emph{isPartOf} bersifat \emph{transitive} untuk hubungan ketransitifan antar \emph{instance} seperti yang telah dijelaskan di awal sub bab ini. Properti \emph{hasMember} dan \emph{memberOf} digunakan untuk mendefinisikan hubungan antara \emph{Person} dengan \emph{Organization}. Domain pada properti \emph{hasMember} adalah \emph{Organization} dan range nya adalah \emph{Person}, oleh karena properti \emph{hasMember} dengan \emph{memberOf} memiliki hubungan inverse, maka domain dan range dari properti \emph{memberOf} adalah kebalikan dari properti \emph{hasMember}.

@@ -1,5 +1,5 @@
 \section{\textit{Question Answering}}
-Semakin banyaknya sumber informasi yang tersedia di internet menyebabkan semakin sulitnya mendapatkan infromasi yang relevan, informasi yang diberikan oleh mesin pencari konvensional saat ini hanya berupa tautan ke laman yang mengandung meta-keyword yang mirip dengan kata kunci yang dimasukkan, pengguna harus membaca terlebih dahulu laman web yang diberikan oleh mesin pencari yang tentu saja akan membutuhkan waktu. Hal ini menjadi tidak efisien terutama apabila yang akan dicari adalah informasi-informasi sederhana seperti informasi cuaca, alamat sebuah instansi dan lain sebagainya. 
+Semakin banyaknya sumber informasi yang tersedia di internet menyebabkan semakin sulitnya mendapatkan infromasi yang relevan, informasi yang diberikan oleh mesin pencari konvensional saat ini hanya berupa tautan ke laman yang mengandung \emph{meta-keyword} yang mirip dengan kata kunci yang dimasukkan, pengguna harus membaca terlebih dahulu laman web yang diberikan oleh mesin pencari yang tentu saja akan membutuhkan waktu. Hal ini menjadi tidak efisien terutama apabila yang akan dicari adalah informasi-informasi sederhana seperti informasi cuaca, alamat sebuah instansi dan lain sebagainya. 
 
 Tujuan dari \emph{question answering (QA)} adalah untuk mencari jawaban atas pertanyaan yang diajukan pengguna dalam bentuk terstruktur maupun tidak terstruktur \citep*{moussa_kader}. Pengguna memasukkan pertanyaan dalam bentuk bahasa alami, kemudian sistem akan memproses pertanyaan dan akan menyajikan jawaban yang relevan dalam bentuk teks.
 
@@ -14,9 +14,9 @@ Tujuan dari \emph{question answering (QA)} adalah untuk mencari jawaban atas per
 	\item Pembentukan Query \emph{(Query Reformulation)} \\
 		Modul ini memegang peranan cukup penting, karena bagian ini yang bertanggungjawab atas keabsahan jawaban yang dihasilkan.
 	\item Modul Pencari \emph{(Search Engine)} \\ 
-		Modul ini digunakan untuk mencari jawaban dari pertayaan yang dihasilkan oleh modul query reformulation. Jawaban akan dicari pada sumber pengetahuan yang telah ditetukan, misalnya laman web ataupun modul basis pengetahuan tertentu seperti ontologi dan lain sebagainya.
+		Modul ini digunakan untuk mencari jawaban dari pertayaan yang dihasilkan oleh modul \emph{query reformulation}. Jawaban akan dicari pada sumber pengetahuan yang telah ditetukan, misalnya laman web ataupun modul basis pengetahuan tertentu seperti ontologi dan lain sebagainya.
 	\item Module Ekstraksi \emph{(Answering Extractor)} \\ 
-		Kandidat jawaban yang dihasilakan oleh modul search engine kemudian akan dikirimkan ke bagian ini, dimana kandidat jawaban yang umumnya berupa dokumen akan diekstraksi dan selanjutkan akan dikirimkan ke modul penyaring.
+		Kandidat jawaban yang dihasilkan oleh modul \emph{search engine} kemudian akan dikirimkan ke bagian ini, dimana kandidat jawaban yang umumnya berupa dokumen akan diekstraksi dan selanjutkan akan dikirimkan ke modul penyaring.
 	\item Modul Penyaring Jawaban \emph{(Answer Filtering)} \\
 		Modul ini akan menyaring kandidat jawaban hasil ekstraksi yang relevan dengan pertanyaan yang diberikan.
 	\item Validasi Jawaban \emph{(Answer Validation)} \\ 

@@ -11,10 +11,10 @@
 
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.ntbprov.go.id/semweb/resource/"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      ontologyIRI="http://www.ntbprov.go.id/semweb/resource/"
      versionIRI="http://www.ntbprov.go.id/ontologies/ntbpar/v3">
     <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
@@ -169,19 +169,29 @@
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="Desa_adat"/>
-        <ObjectUnionOf>
-            <ObjectIntersectionOf>
-                <Class abbreviatedIRI="dbid:Desa"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="dbid:Desa"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="property/hasBudaya"/>
+                <Class abbreviatedIRI="dbid:Budaya"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="Desa_wisata"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="dbid:Desa"/>
+            <ObjectUnionOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="property/hasBudaya"/>
                     <Class abbreviatedIRI="dbid:Budaya"/>
                 </ObjectSomeValuesFrom>
-            </ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="property/hasProduct"/>
-                <Class abbreviatedIRI="dbid:Kerajinan"/>
-            </ObjectSomeValuesFrom>
-        </ObjectUnionOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="property/hasProduct"/>
+                    <Class abbreviatedIRI="dbid:Kerajinan"/>
+                </ObjectSomeValuesFrom>
+            </ObjectUnionOf>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <SubClassOf>
         <Class IRI="http://dbpedia.org/resource/Resort"/>
@@ -256,8 +266,8 @@
         <Class IRI="Wisata_budaya"/>
     </DisjointClasses>
     <InverseObjectProperties>
-        <ObjectProperty abbreviatedIRI="dct:hasPart"/>
         <ObjectProperty abbreviatedIRI="dct:isPartOf"/>
+        <ObjectProperty abbreviatedIRI="dct:hasPart"/>
     </InverseObjectProperties>
 </Ontology>
 
